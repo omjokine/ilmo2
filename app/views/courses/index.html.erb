@@ -1,0 +1,13 @@
+<h1>Ilmo 2.0</h1>
+
+<p>
+<% @courses.each do |course| %>
+    <%= link_to course.name, course %>
+    (<%= link_to 'edit', edit_course_path(course) %>|<%= link_to 'destroy', course, :confirm => 'Are you sure?', :method => :delete %>)<br />
+<% end %>
+
+<br />
+
+<%= link_to 'Add new course', new_course_path %>
+
+</p>
