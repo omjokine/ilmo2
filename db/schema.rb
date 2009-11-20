@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20091119222737) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "name"
-    t.integer  "student_number"
+    t.string   "student_number"
     t.string   "hashed_password"
     t.datetime "created_at"
     t.datetime "updated_at"

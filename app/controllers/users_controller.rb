@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :is_authenticated?, :only => [ :index, :new, :create ]
+  
   def index
     @user = User.new
-  end
-
-  def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -19,10 +17,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    @user.hashed_password = User.crypt_password(@user.password)
-
     if @user.save
-      flash[:notice] = 'Registering ok.'
+      flash[:notice] = 'Account created'
       redirect_to(root_path) 
     else
       render :action => "new"
@@ -33,18 +29,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      flash[:notice] = 'Details was successfully updated.'
-      redirect_to(@user)
+      flash[:notice] = 'Details were successfully updated.'
+      redirect_to courses_path
     else
       render :action => "edit" 
     end
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    redirect_to(users_url)
+    # Using current_user ensures that only current_user can be destroyed (instead of finding by parameter)
+    log_user_out!
+    current_user.destroy
+    redirect_to(login_path)
   end
   
 end
