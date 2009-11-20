@@ -8,11 +8,11 @@
   <%= stylesheet_link_tag 'ilmo2' %>
 </head>
 <body>
+<p><%=link_to 'Logout', '/logout'%></p>
 
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield %>
-
 
 <p>This page was generated at <%= Time.now.strftime("%d.%m.%Y %H:%M") %></p>
 
