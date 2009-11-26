@@ -14,5 +14,15 @@ puts "Usage: rake db:seed courses=<number of courses> <overwrite=true>" if how_m
 Course.delete_all if overwrite
  
 for i in 1..how_many_courses
-  Course.create(:name => "#{'Course #' + i.to_s}", :description => "Non eram nescius, Brute, cum, quae summis ingeniis exquisitaque doctrina philosophi Graeco sermone tractavissent, ea Latinis litteris mandaremus, fore ut hic noster labor in varias reprehensiones incurreret. nam quibusdam, et iis quidem non admodum indoctis, totum hoc displicet philosophari")
+  c = Course.create(:name => "#{'Course #' + i.to_s}", :description => "Non eram nescius, Brute, cum, quae summis ingeniis exquisitaque doctrina philosophi Graeco sermone tractavissent, ea Latinis litteris mandaremus, fore ut hic noster labor in varias reprehensiones incurreret. nam quibusdam, et iis quidem non admodum indoctis, totum hoc displicet philosophari")
+  ci = CourseInstance.create(:name => "Spring 2010")
+  ci2 = CourseInstance.create(:name => "Summer 2010")
+  ci3 = CourseInstance.create(:name => "Fall 2010")
+  ceg = CourseExerciseGroup.create(:name => "Group 1")
+  ceg2 = CourseExerciseGroup.create(:name => "Group 2")
+  ci.course_exercise_groups = [ceg, ceg2]
+  ci2.course_exercise_groups = [ceg, ceg2]
+  ci3.course_exercise_groups = [ceg, ceg2]
+  c.course_instances = [ci, ci2, ci3]
+  c.save
 end

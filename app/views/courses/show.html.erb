@@ -3,6 +3,8 @@
 <%= @course.description %>
 </p>
 
+<% unless @course.course_instances.empty? %>
+<h2>Course instances:</h2>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>
