@@ -1,0 +1,259 @@
+
+
+Processing CoursesController#show (for 0.0.0.0 at 2009-11-27 00:53:27) [GET]
+  Parameters: {"action"=>"show", "id"=>"12", "controller"=>"courses"}
+Redirected to http://test.host/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 0ms (DB: 0) | 302 Found [http://test.host/courses/12]
+  [4;36;1mCourse Create (0.6ms)[0m   [0;1mINSERT INTO "courses" ("name", "updated_at", "description", "created_at") VALUES('Rails and rSpec', '2009-11-26 22:53:27', NULL, '2009-11-26 22:53:27')[0m
+  [4;35;1mCourse Create (0.2ms)[0m   [0mINSERT INTO "courses" ("name", "updated_at", "description", "created_at") VALUES('Rails and rSpec', '2009-11-26 22:53:27', NULL, '2009-11-26 22:53:27')[0m
+  [4;36;1mCourse Create (0.2ms)[0m   [0;1mINSERT INTO "courses" ("name", "updated_at", "description", "created_at") VALUES('Rails and rSpec', '2009-11-26 22:53:27', NULL, '2009-11-26 22:53:27')[0m
+
+
+Processing CoursesController#index (for 0.0.0.0 at 2009-11-27 00:53:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+Redirected to http://test.host/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 0ms (DB: 1) | 302 Found [http://test.host/courses]
+
+
+Processing CoursesController#index (for 0.0.0.0 at 2009-11-27 00:53:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+Redirected to http://test.host/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 0ms (DB: 0) | 302 Found [http://test.host/courses]
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO "users" ("name", "updated_at", "hashed_password", "username", "student_number", "created_at") VALUES(NULL, '2009-11-26 22:53:27', '6c257c68ea1bac388b41be9ef26ce79572d955e3', 'john', NULL, '2009-11-26 22:53:27')[0m
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2009-11-27 00:57:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+  [4;36;1mCourse Load (0.7ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/application
+Rendering courses/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+ActionView::TemplateError (Couldn't find User with ID=1) on line #20 of app/views/layouts/application.html.erb:
+17: 	<h1><%= link_to "Ilmo 2.0", root_path %></h1>
+18: 	
+19: 	<% if logged_in? %>
+20: 		<p><%=t :welcome%> <%= link_to current_user.username, edit_user_path(current_user) %>. (<%= link_to "logout", logout_path %>)</p>
+21: 	<% end %>
+22: 	
+23: 	<% if flash[:notice] %>
+
+    lib/user_authentication.rb:17:in `current_user'
+    app/views/layouts/application.html.erb:20
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (41.2ms)
+Rendered rescues/_request_and_response (1.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2009-11-27 00:57:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+  [4;36;1mCourse Load (0.3ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/application
+Rendering courses/index
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+ActionView::TemplateError (Couldn't find User with ID=1) on line #20 of app/views/layouts/application.html.erb:
+17: 	<h1><%= link_to "Ilmo 2.0", root_path %></h1>
+18: 	
+19: 	<% if logged_in? %>
+20: 		<p><%=t :welcome%> <%= link_to current_user.username, edit_user_path(current_user) %>. (<%= link_to "logout", logout_path %>)</p>
+21: 	<% end %>
+22: 	
+23: 	<% if flash[:notice] %>
+
+    lib/user_authentication.rb:17:in `current_user'
+    app/views/layouts/application.html.erb:20
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (40.7ms)
+Rendered rescues/_request_and_response (83.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2009-11-27 00:57:23) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+  [4;36;1mCourse Load (0.3ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/application
+Rendering courses/index
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+ActionView::TemplateError (Couldn't find User with ID=1) on line #20 of app/views/layouts/application.html.erb:
+17: 	<h1><%= link_to "Ilmo 2.0", root_path %></h1>
+18: 	
+19: 	<% if logged_in? %>
+20: 		<p><%=t :welcome%> <%= link_to current_user.username, edit_user_path(current_user) %>. (<%= link_to "logout", logout_path %>)</p>
+21: 	<% end %>
+22: 	
+23: 	<% if flash[:notice] %>
+
+    lib/user_authentication.rb:17:in `current_user'
+    app/views/layouts/application.html.erb:20
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (39.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2009-11-27 00:57:24) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+  [4;36;1mCourse Load (0.2ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/application
+Rendering courses/index
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+ActionView::TemplateError (Couldn't find User with ID=1) on line #20 of app/views/layouts/application.html.erb:
+17: 	<h1><%= link_to "Ilmo 2.0", root_path %></h1>
+18: 	
+19: 	<% if logged_in? %>
+20: 		<p><%=t :welcome%> <%= link_to current_user.username, edit_user_path(current_user) %>. (<%= link_to "logout", logout_path %>)</p>
+21: 	<% end %>
+22: 	
+23: 	<% if flash[:notice] %>
+
+    lib/user_authentication.rb:17:in `current_user'
+    app/views/layouts/application.html.erb:20
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+    /usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+    /usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+    /usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+    /usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+    /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (44.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2009-11-27 00:57:34) [GET]
+  Parameters: {"action"=>"destroy", "controller"=>"sessions"}
+Redirected to http://0.0.0.0:3000/
+Completed in 3ms (DB: 0) | 302 Found [http://0.0.0.0/logout]
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2009-11-27 00:57:34) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+Redirected to http://0.0.0.0:3000/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://0.0.0.0/]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-11-27 00:57:34) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/index
+Completed in 103ms (View: 100, DB: 0) | 200 OK [http://0.0.0.0/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2009-11-27 00:57:35) [GET]
+  Parameters: {"action"=>"new", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/new
+Completed in 16ms (View: 15, DB: 0) | 200 OK [http://0.0.0.0/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2009-11-27 00:57:39) [POST]
+  Parameters: {"user"=>{"name"=>"testi", "password_confirmation"=>"[FILTERED]", "username"=>"testi", "password"=>"[FILTERED]"}, "commit"=>"Create", "action"=>"create", "controller"=>"users"}
+  [4;36;1mUser Create (0.8ms)[0m   [0;1mINSERT INTO "users" ("name", "updated_at", "hashed_password", "username", "student_number", "created_at") VALUES('testi', '2009-11-26 22:57:39', 'f1e1c6ea766397606475ab41d7f124258da887b9', 'testi', NULL, '2009-11-26 22:57:39')[0m
+Redirected to http://0.0.0.0:3000/
+Completed in 8ms (DB: 1) | 302 Found [http://0.0.0.0/users]
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2009-11-27 00:57:39) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+Redirected to http://0.0.0.0:3000/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://0.0.0.0/]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2009-11-27 00:57:39) [GET]
+  Parameters: {"action"=>"index", "controller"=>"users"}
+Rendering template within layouts/application
+Rendering users/index
+Completed in 11ms (View: 10, DB: 0) | 200 OK [http://0.0.0.0/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2009-11-27 00:57:44) [POST]
+  Parameters: {"user"=>{"username"=>"testi", "password"=>"[FILTERED]"}, "commit"=>"Log in", "action"=>"create", "controller"=>"sessions"}
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."username" = 'testi') LIMIT 1[0m
+Redirected to http://0.0.0.0:3000/courses
+Completed in 3ms (DB: 1) | 302 Found [http://0.0.0.0/session]
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2009-11-27 00:57:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+  [4;36;1mCourse Load (0.3ms)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering template within layouts/application
+Rendering courses/index
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 7ms (View: 5, DB: 1) | 200 OK [http://0.0.0.0/courses]
+
+
+Processing CoursesController#show (for 0.0.0.0 at 2009-11-27 00:58:00) [GET]
+  Parameters: {"action"=>"show", "id"=>"12", "controller"=>"courses"}
+Redirected to http://test.host/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 0ms (DB: 0) | 302 Found [http://test.host/courses/12]
+  [4;36;1mCourse Create (0.6ms)[0m   [0;1mINSERT INTO "courses" ("name", "updated_at", "description", "created_at") VALUES('Rails and rSpec', '2009-11-26 22:58:00', NULL, '2009-11-26 22:58:00')[0m
+  [4;35;1mCourse Create (0.2ms)[0m   [0mINSERT INTO "courses" ("name", "updated_at", "description", "created_at") VALUES('Rails and rSpec', '2009-11-26 22:58:00', NULL, '2009-11-26 22:58:00')[0m
+  [4;36;1mCourse Create (0.2ms)[0m   [0;1mINSERT INTO "courses" ("name", "updated_at", "description", "created_at") VALUES('Rails and rSpec', '2009-11-26 22:58:00', NULL, '2009-11-26 22:58:00')[0m
+
+
+Processing CoursesController#index (for 0.0.0.0 at 2009-11-27 00:58:00) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+Redirected to http://test.host/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 0ms (DB: 1) | 302 Found [http://test.host/courses]
+
+
+Processing CoursesController#index (for 0.0.0.0 at 2009-11-27 00:58:00) [GET]
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+Redirected to http://test.host/login
+Filter chain halted as [:is_authenticated?] rendered_or_redirected.
+Completed in 0ms (DB: 0) | 302 Found [http://test.host/courses]
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO "users" ("name", "updated_at", "hashed_password", "username", "student_number", "created_at") VALUES(NULL, '2009-11-26 22:58:00', '6c257c68ea1bac388b41be9ef26ce79572d955e3', 'john', NULL, '2009-11-26 22:58:00')[0m

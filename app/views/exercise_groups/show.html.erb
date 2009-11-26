@@ -1,0 +1,17 @@
+<h2>
+  <b>Course:</b>
+  <%=h @exercise_group.course_instance.course.name %>
+</h2>
+
+<h3>
+  <b>Course instance:</b>
+  <%=h @exercise_group.course_instance.name %>
+</h3>
+
+<h4>
+  <%=h @exercise_group.name %>
+</h4>
+
+
+<%= link_to 'Edit', edit_course_course_instance_exercise_group_path(@exercise_group.course_instance.course, @exercise_group.course_instance, @exercise_group) %> |
+<%= link_to 'Back', course_course_instance_path(@exercise_group.course_instance.course, @exercise_group.course_instance) %>

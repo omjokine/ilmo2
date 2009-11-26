@@ -18,11 +18,15 @@ for i in 1..how_many_courses
   ci = CourseInstance.create(:name => "Spring 2010")
   ci2 = CourseInstance.create(:name => "Summer 2010")
   ci3 = CourseInstance.create(:name => "Fall 2010")
-  ceg = CourseExerciseGroup.create(:name => "Group 1")
-  ceg2 = CourseExerciseGroup.create(:name => "Group 2")
-  ci.course_exercise_groups = [ceg, ceg2]
-  ci2.course_exercise_groups = [ceg, ceg2]
-  ci3.course_exercise_groups = [ceg, ceg2]
+  eg = ExerciseGroup.create(:name => "Group 1")
+  eg2 = ExerciseGroup.create(:name => "Group 2")
+  ci.exercise_groups = [eg, eg2]
+  eg_ci2 = ExerciseGroup.create(:name => "Group 1")
+  eg2_ci2 = ExerciseGroup.create(:name => "Group 2")
+  ci2.exercise_groups = [eg_ci2, eg2_ci2]
+  eg_ci3 = ExerciseGroup.create(:name => "Group 1")
+  eg2_ci3 = ExerciseGroup.create(:name => "Group 2")
+  ci3.exercise_groups = [eg_ci3, eg2_ci3]
   c.course_instances = [ci, ci2, ci3]
   c.save
 end

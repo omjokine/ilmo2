@@ -17,7 +17,7 @@
 	<h1><%= link_to "Ilmo 2.0", root_path %></h1>
 	
 	<% if logged_in? %>
-		<p>Welcome, <%= link_to current_user.username, edit_user_path(current_user) %> (<%= link_to "logout", logout_path %>)</p>
+		<p><%=t :welcome%> <%= link_to current_user.username, edit_user_path(current_user) %>. (<%= link_to "logout", logout_path %>)</p>
 	<% end %>
 	
 	<% if flash[:notice] %>

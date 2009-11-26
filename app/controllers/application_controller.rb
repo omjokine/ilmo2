@@ -10,9 +10,10 @@ class ApplicationController < ActionController::Base
 
   include UserAuthentication # /lib/user_authentication.rb
   
-  
   before_filter :is_authenticated?
-  
+
+  before_filter :set_locale
+
   protected
   
   def is_authenticated?
@@ -22,4 +23,12 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+  
+  private
+  
+  def set_locale
+    session[:locale] = params[:locale] if params[:locale]
+    I18n.locale = session[:locale]
+  end
+  
 end
