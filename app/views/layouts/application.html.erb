@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Courses: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag "application" %>
+
+  <%= javascript_include_tag 'XMLHttpRequest' ,'v2.standalone.full.min', 'v2.config', 'v2.rails' %>
+  <%= javascript_for_validatious %>
+
+</head>
+
+<body>
+
+	<h1><%= link_to "Ilmo 2.0", root_path %></h1>
+	
+	<% if logged_in? %>
+		<p>Welcome, <%= link_to current_user.username, edit_user_path(current_user) %> (<%= link_to "logout", logout_path %>)</p>
+	<% end %>
+	
+	<% if flash[:notice] %>
+		<p style="color: green"><%= flash[:notice] %></p>
+	<% end %>
+	<% if flash[:error] %>
+		<p style="color: red"><%= flash[:error] %></p>
+	<% end %>
+
+
+	<%= yield %>
+
+	<hr/>
+	
+	<p>This page was generated at <%= page_generation_timestamp %></p>
+
+</body>
+</html>

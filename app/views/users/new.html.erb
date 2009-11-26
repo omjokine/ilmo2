@@ -1,6 +1,6 @@
 <h1>Registering to Ilmo 2.0</h1>
 
-<% form_for(@user) do |f| %>
+<% form_for(@user, :html => {:class => 'validate'}) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -11,10 +11,7 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
-    <%= f.label :student_number %><br />
-    <%= f.text_field :student_number %>
-  </p>
+
   <p>
     <%= f.label :password %><br />
     <%= f.password_field :password %>

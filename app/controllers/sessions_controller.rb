@@ -1,19 +1,22 @@
 class SessionsController < ApplicationController
   
+  skip_before_filter :is_authenticated?, :only => [ :create ]
+  
+  
   def create
-    user = User.authenticate(params[:username], params[:password])
-    
-    if user
-      session[:user_id] = user.id
-      flash[:notice] = "Welcome Ilmo 2.0 "+user.username+"!"
+    authenticated_user = User.authenticate(params[:user][:username], params[:user][:password])
+  
+    if authenticated_user
+      log_user_in(authenticated_user)  # lib/user_authentication.rb
       redirect_to courses_path
     else
-      reset_session
-      flash[:notice] = "Login failed, check your username and password."
-      redirect_to root_path
+      flash[:error] = "Login failed, check your username and password."
+      redirect_to login_path
     end
+     
   end
   
+    
   def destroy
     reset_session
     redirect_to root_path
