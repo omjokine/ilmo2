@@ -52,3 +52,12 @@ Spec::Runner.configure do |config|
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
+
+module TestHelper
+  
+  def fake_as_authenticated!
+    controller.stub!(:is_authenticated?).and_return(true)
+  end
+end
+
+include TestHelper

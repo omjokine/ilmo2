@@ -4,7 +4,8 @@ describe User do
   before(:each) do
     @valid_attributes = {
       :username => "john",
-      :password => "secretret"
+      :password => "secretret",
+      :password_confirmation => "secretret"
     }
     
     @valid_user = User.new(@valid_attributes)
@@ -15,10 +16,10 @@ describe User do
       User.create!(@valid_attributes)
     end
     
-    it "should lowercase username" #do
-       #user = User.create!(@valid_attributes.merge({:username => "jOhN"}))
-       #user.username.should == "john"
-    #end
+    it "should lowercase username" do
+       user = User.create!(@valid_attributes.merge({:username => "jOhN"}))
+       user.username.should == "john"
+    end
   end
 
   describe "validation" do
@@ -35,10 +36,13 @@ describe User do
     
     it "should have a password" do
       @valid_user.password = ""
-      @valid_user.should have(1).errors_on(:password)
+      @valid_user.should have(2).errors_on(:password)
     end
     
-    it "should require confirmation of password"
+    it "should require confirmation of password" do
+      @valid_user.password_confirmation = ""
+      @valid_user.should have(1).error_on(:password)
+    end
     
   end
   

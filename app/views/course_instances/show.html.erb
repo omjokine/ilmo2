@@ -1,21 +1,15 @@
-<h2>
-  <b>Course:</b>
-  <%=h @course_instance.course.name %>
-</h2>
+<h2>Course: <%= h @course_instance.course.name %> <%=h @course_instance.name %></h2>
 
-<h3>
-  <%=h @course_instance.name %>
-</h3>
-
-<% unless @course_instance.exercise_groups.empty? %>
 <h2>Exercise Groups:</h2>
-<p>
+
+<% if @course_instance.exercise_groups.any? %>
+<ul>
 <% @course_instance.exercise_groups.each do |exercise_group| %>
-    <%= link_to exercise_group.name, course_course_instance_exercise_group_path(@course_instance.course, @course_instance, exercise_group) %>
-    (<%= link_to 'edit', edit_course_course_instance_exercise_group_path(@course_instance.course, @course_instance, exercise_group) %>|<%= link_to 'destroy', course_course_instance_exercise_group_path(@course_instance.course, @course_instance, exercise_group), :confirm => 'Are you sure?', :method => :delete %>)<br />
+   <li><%= link_to exercise_group.name, course_course_instance_exercise_group_path(@course_instance.course, @course_instance, exercise_group) %></li>
 <% end %>
-</p>
+</ul>
+<% else %>
+	<p>No exercise groups.</p>
 <% end %>
 
-<%= link_to 'Edit', edit_course_course_instance_path(@course_instance.course, @course_instance) %> |
 <%= link_to 'Back', course_path(@course_instance.course) %>

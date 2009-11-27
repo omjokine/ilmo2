@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
 
 
-  before_save :hash_password
-  
+  before_save :hash_password, :downcase_username
   
   def self.authenticate(username, password)
     user = User.find_by_username(username)
@@ -40,6 +39,10 @@ class User < ActiveRecord::Base
   def hash_password
     return if self.password.blank?
     self.hashed_password = User.hash_plaintext_password(self.password)
+  end
+
+  def downcase_username
+    self.username.downcase!
   end
   
   def self.hash_plaintext_password(password)

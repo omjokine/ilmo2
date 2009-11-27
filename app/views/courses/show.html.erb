@@ -1,17 +1,21 @@
-<h1><%= link_to @course.name, edit_course_path(@course) %></h1>
-<p>
-<%= @course.description %>
-</p>
+<h1><%= h @course.name %></h1>
 
-<% unless @course.course_instances.empty? %>
+<p><%= h @course.description %></p>
+
+
 <h2>Course instances:</h2>
-<p>
+
+<% if @course.course_instances.any? %>
+
+<ul>
 <% @course.course_instances.each do |course_instance| %>
-    <%= link_to course_instance.name, course_course_instance_path(@course, course_instance) %>
-    (<%= link_to 'edit', edit_course_course_instance_path(@course, course_instance) %>|<%= link_to 'destroy', course_course_instance_path(@course, course_instance), :confirm => 'Are you sure?', :method => :delete %>)<br />
+    <li><%= link_to course_instance.name, course_course_instance_path(@course, course_instance) %></li>
 <% end %>
-</p>
+</ul>
+<% else %>
+	<p>No course instances.</p>
 <% end %>
+
 
 <%= link_to 'Back to main page', courses_path %>
 

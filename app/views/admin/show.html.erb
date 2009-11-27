@@ -1,0 +1,12 @@
+
+<%= link_to "Back to the site", root_url %>
+
+<ul>
+	<li><%= link_to "Users", admin_users_path %></li>
+	<li><%= link_to "Courses", admin_courses_path %>
+		<ul>
+			<li><%= link_to "Course instances", admin_course_instances_path %></li>
+			<li><%= link_to "Exercise groups", admin_exercise_groups_path %></li>	
+		</ul>
+	</li>
+</ul>
