@@ -3,7 +3,6 @@ class Course < ActiveRecord::Base
   has_many :course_instances, :dependent => :destroy
   
   default_scope :order => "created_at DESC"
-  
   named_scope :with_description, :conditions => "description IS NOT NULL"
  
   # Course.recent(4.days.ago)
