@@ -18,7 +18,7 @@ module PdfExport
     courses.each do |course|
       pdf.text("Name: #{course.name}", :font_size=>32)
       pdf.text("Description:", :font_size=>12)
-      pdf.text(course.description, :left=>50)
+      pdf.text(course.description, :left=>50) if course.description
     end
 		
 		pdf.render

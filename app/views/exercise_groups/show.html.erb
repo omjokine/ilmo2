@@ -1,6 +1,19 @@
-<h2><%= h @exercise_group.course_instance.course.name %> <%=h @exercise_group.course_instance.name %></h2>
+<%
+course_instance = @exercise_group.course_instance
+course = course_instance.course 
+ %>
 
-<h4> <%=h @exercise_group.name %> </h4>
+<h2><%= h course.name %> <%=h course_instance.name %></h2>
 
+<h3> <%=h @exercise_group.name %> </h3>
+
+<h4>Registered users:</h4>
+<ul>
+<% @exercise_group.users.each do |registered_user| %>
+  <li><%= registered_user.name %></li>
+<% end %>
+</ul>
+
+<p><%= link_to 'Register to this exercise group', course_course_instance_exercise_group_registration_url(course, course_instance, @exercise_group) %></p>
 
 <%= link_to 'Back', course_course_instance_path(@exercise_group.course_instance.course, @exercise_group.course_instance) %>

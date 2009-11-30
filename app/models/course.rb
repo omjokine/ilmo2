@@ -14,5 +14,13 @@ class Course < ActiveRecord::Base
       
       {:conditions => ["created_at > ? ", later_than]} 
     }
+ 
+  after_save :add_newsfeed_event
+ 
+  private
+  
+  def add_newsfeed_event
+    Newsfeed.create(:message => "New course \"" + name + "\" is available. Register now!")
+  end
   
 end
