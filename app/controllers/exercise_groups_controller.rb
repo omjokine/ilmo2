@@ -12,13 +12,17 @@ class ExerciseGroupsController < ApplicationController
     exercise_group = ExerciseGroup.find(params[:exercise_group_id])
     course_instance = CourseInstance.find(params[:course_instance_id])
 
-    if exercise_group.users.include?(current_user)
-      flash[:notice] = 'You have already registered to this exercise group.'
-    elsif !course_instance.multiple_registrations? && course_instance.registered_users.include?(current_user)
-      flash[:notice] = 'You have already registered to this course instance.'
-    else
-      exercise_group.users << current_user
+#    if exercise_group.users.include?(current_user)
+#      flash[:notice] = 'You have already registered to this exercise group.'
+ #   elsif !course_instance.multiple_registrations? && course_instance.registered_users.include?(current_user)
+ #     flash[:notice] = 'You have already registered to this course instance.'
+ #   else
+ #     exercise_group.users << current_user
  
+  #    flash[:notice] = 'Succesfully registered to the exercise group.' 
+  #  end
+
+    if exercise_group.users << current_user
       flash[:notice] = 'Succesfully registered to the exercise group.' 
     end
 

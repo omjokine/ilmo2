@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
 
   before_save :hash_password, :downcase_username
-  after_save :add_newsfeed_event
+  after_create :add_newsfeed_event
   
   def self.authenticate(username, password)
     user = User.find_by_username(username)
@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
   
   def add_newsfeed_event
-    Newsfeed.create(:message => username.to_s + " registered to Ilmo 2.0.")
+    Newsfeed.user_created(self)
   end
 
 end
