@@ -1,2 +1,2 @@
-module NewsfeedsHelper
+module NewsfeedHelper
 end
