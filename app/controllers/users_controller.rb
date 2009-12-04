@@ -38,8 +38,9 @@ class UsersController < ApplicationController
 
   def destroy
     # Using current_user ensures that only current_user can be destroyed (instead of finding by parameter)
+    user_to_destroy = current_user 
     log_user_out!
-    current_user.destroy
+    user_to_destroy.destroy
     redirect_to(login_path)
   end
   
