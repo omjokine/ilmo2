@@ -1,0 +1,7 @@
+<div id="newsfeed">
+<ul>
+<% Newsfeed.recent.each do |item|  %>
+  <li><%= "#{item.message} <br /> #{time_ago_in_words(item.created_at)} ago" %></li>
+<% end%>
+</ul>
+</div>

@@ -1,0 +1,18 @@
+<h2>Send mail</h2>
+  
+<% if flash[:mailed_to] %>
+  <p style="color: green">Successfully mailed to: <%= flash[:mailed_to].join(", ") %></p>
+<% end %>
+ 
+ 
+<% form_tag admin_mailer_path do %>
+ 
+  <%= select_tag 'exercise_group_id',
+    options_for_select(@exercise_groups.collect{ |exg| ["#{exg.course_instance.course.name} - #{exg.course_instance.name} - #{exg.name}: #{exg.users.count} registrants", exg.id] }) %>
+  <br/>
+ 
+  Subject: <%= text_field_tag :subject %><br/>
+  <%= text_area_tag :body, nil, :rows=>10, :cols=>40 %>
+ 
+  <%= submit_tag "Ok" %>
+<% end %>
