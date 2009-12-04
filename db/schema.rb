@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(:version => 20091130211137) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "multiple_registrations"
     t.integer  "min_exercise_groups"
     t.integer  "max_exercise_groups"
   end

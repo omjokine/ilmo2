@@ -5,13 +5,11 @@ class CourseInstance < ActiveRecord::Base
   
   
   def registered_users
-    users = []
-    
-    exercise_groups.each do |exercise_group|
-      users << exercise_group.users
-    end
-    
-    return users
+    exercise_groups.map{|g| g.users}.flatten.uniq
+  end
+  
+  def allow_multiple_registrations?
+    max_exercise_groups && max_exercise_groups > 1
   end
   
 end
