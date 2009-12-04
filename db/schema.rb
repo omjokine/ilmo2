@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091130211137) do
+ActiveRecord::Schema.define(:version => 20091204143356) do
 
   create_table "course_instances", :force => true do |t|
     t.integer  "course_id"
@@ -47,6 +47,19 @@ ActiveRecord::Schema.define(:version => 20091130211137) do
     t.datetime "updated_at"
   end
 
+  create_table "rights", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "name"
@@ -55,6 +68,10 @@ ActiveRecord::Schema.define(:version => 20091130211137) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

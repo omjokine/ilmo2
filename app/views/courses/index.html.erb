@@ -1,10 +1,3 @@
-<h2>Newsfeed</h2>
-<ul>
-<% Newsfeed.recent.each do |newsfeed|  %>
-  <li><%= "(" + newsfeed.created_at.strftime("%d.%m %H:%M") + ") " + newsfeed.message %></li>
-<% end%>
-</ul>
-
 <h2>Courses available</h2>
 <p><%= link_to "All courses as PDF", courses_url(:format => :pdf) %></p>
 

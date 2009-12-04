@@ -31,5 +31,17 @@
   </p>
 <% end %>
 
+<h2>Profile image</h2>
+ 
+<!-- not resizing the image because it depends on ImageMagick or similar server-side library! If it's available, then
+paperclip can make use of it when configured so -->
+<p><%= image_tag @user.avatar.url, :width=>"48" %></p>
+ 
+<h3>Upload a new profile image</h3>
+ 
+<% form_for @user, :url => user_path, :html => { :multipart => true } do |f| %>
+   <%= f.file_field :avatar %>
+<%= f.submit "Upload" %>
+<% end %>
 
 <%= link_to 'Destroy account', user_path, :method => :delete, :confirm => "Are you sure?" %>

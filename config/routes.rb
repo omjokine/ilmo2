@@ -17,11 +17,15 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :courses, :active_scaffold => true
     admin.resources :course_instances, :active_scaffold => true
     admin.resources :exercise_groups, :active_scaffold => true
+    admin.resources :roles, :active_scaffold => true
+    admin.resources :rights, :active_scaffold => true
+    admin.resources :registrations, :active_scaffold => true
+    admin.resource :mailer, :controller => "mailer"
   end
   
   map.resource :admin, :controller => :admin
   
-  map.connect '/feed', :controller => :newsfeeds, :action => :feed
+  map.resource :newsfeed, :controller => "newsfeed"
   
   map.login "/login", :controller=>:users, :action=>:index
   map.logout "/logout", :controller=>:sessions, :action=>:destroy
